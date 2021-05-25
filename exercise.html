@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise JS</title>
+  </head>
+  <body>
+    <a href="https://cfdtraining.vn">Learn more</a>
+    <h1></h1>
+    <div>
+      <label for="input-text">Nhập nội dung</label>
+      <input type="text" id="input-text" />
+      <button>Click</button>
+    </div>
+
+    <script>
+      //BTjs
+      //https://docs.google.com/document/d/19K5T9n4rm1YTjXczePR1I6GbOfECvuqG9ZOJZgbMEWI/edit?fbclid=IwAR1E8Tlo5vRjWKBC2oYfQLLEBa02j-_2xjZHhxjB2bI8e8NLexcxuwkss0Q
+
+      //1.
+      let a = 4,
+        b = 12;
+
+      function sum(a, b) {
+        return a + b;
+      }
+      console.log("Tổng: " + sum(a, b));
+
+      function divisionSur(a, b) {
+        return b % a;
+      }
+      console.log("b % a = " + divisionSur(a, b));
+
+      function divisionInt(a, b) {
+        return b / a;
+      }
+      console.log("b / a = " + divisionInt(a, b));
+
+      //2.
+
+      function fullName(firstName, lastName) {
+        return `${firstName} ${lastName}`;
+      }
+      console.log(fullName("Dan", "Tran"));
+
+      // 3.
+      let str = "happy news year";
+      let replaceStr = str.replace("happy", "HAPPY");
+
+      // a: In ra tổng số ký tự có trong chuỗi
+      console.log("tổng số ký tự có trong chuỗi là: " + str.length);
+      // b: In ra vị trí của chữ “y” từ đầu xuống
+      console.log("Vị trí của chữ “y” từ đầu xuống là: " + str.indexOf("y"));
+      // c: In ra vị trí của chữ “y” từ dưới lên
+      console.log("Vị trí của chữ “y” từ dưới lên là: " + str.lastIndexOf("y"));
+      // d: Dùng replace để thay thế từ “happy” bằng một từ tuỳ ý
+      console.log("replace để thay thế từ “happy”: " + replaceStr);
+
+      //4.
+      let num = 16;
+
+      function isEvenOrOddNumber(num) {
+        if (num % 2 === 0) {
+          console.log(num + ": là số chẵn (true)");
+        } else {
+          console.log(num + ": là số lẻ (false)");
+        }
+      }
+      isEvenOrOddNumber(num);
+
+      //5.
+      let total = 0;
+      for (let i = 0; i < 10; i++) {
+        total += i;
+      }
+      console.log("Tổng giá trị là: " + total);
+
+      //6.
+
+      let n = 0;
+      let showNumber = [];
+      while (n <= 20) {
+        if (n % 2 === 0) {
+          showNumber.push(n);
+        }
+        n++;
+      }
+      console.log("các số chẵn là: " + showNumber.join(","));
+
+      //7.
+      // const là hằng số không thay đổi, không thể gán lại cũng như khai báo lại
+
+      // var mình có thể khai báo ở bất cứ đâu, có thể gán lại và có thể khai báo lại, Phạm vi hàm (function scope) hoặc phạm vi toàn cục
+      var language = "JavaScript";
+
+      function foo() {
+        var language = "Python";
+        framework = "React";
+        console.log(language);
+      }
+
+      foo(); // "Python"
+      console.log(language); // "JavaScript"
+      console.log(window.language); // "JavaScript"
+      console.log(window.framework); // "React"
+
+      // let Có thể gán lại nhưng không thể khai báo lại, phạm vi khối (được sử dụng trong 1 khối nếu nó ở ngoài khối thì undefined)
+
+      //Biến cục bộ: khi khai báo nó nằm bên trong một hàm cụ thể nào đó, nằm bên trong dấu ngoặc nhọn
+      //Biến toàn cục:  khai báo bên ngoài và không nằm bên, nằm bên ngoài hoặc bên trong dấu ngoặc nhọn
+
+      //8.
+      let arr = ["dan", 12, "a", "b", "c"];
+      arr.splice(3, 2);
+      console.log(arr);
+
+      //9.
+
+      //10.
+
+      let tagA = document.querySelector("a");
+      let textTagA = tagA.getAttribute("href");
+      tagA.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log(textTagA);
+      });
+
+      //11.
+
+      //11.
+      // Callback là một func, được thực thi sau 1 func khác thực thi xong, thường thì trả về 1 function, func nào được truyền vào nhu một tham số thì đc gọi là callback
+
+      function startWork(work, callback) {
+        console.log(`Start to ${work}`);
+        callback();
+      }
+      function finishWork() {
+        console.log("Finish working!");
+      }
+      startWork("wash clothes", finishWork);
+
+      function clock() {
+        let date = new Date();
+        let hoursCurrent = date.getHours();
+        let minutesCurrent = date.getMinutes();
+        let secondsCurrent = date.getSeconds();
+        let h1 = document.querySelector("h1");
+        h1.innerHTML = "";
+        h1.textContent = `${hoursCurrent} : ${minutesCurrent} : ${secondsCurrent}`;
+      }
+      setInterval(() => clock(), 1000);
+
+      //BT DOM
+
+      //4.
+      function isEvenOrOddNumbers(number) {
+        if (number > 100 || number.typeof === "string") {
+          alert("Hãy nhập một số bất kì từ 0 đến 100 và nhập bằng chữ số");
+          return;
+        }
+        if (number % 2 === 0) {
+          console.log(number + " là số chẵn");
+        } else {
+          console.log(number + " là số lẻ");
+        }
+      }
+      isEvenOrOddNumbers(12);
+
+      //5.
+      let inputText = document.querySelector("input");
+      let btnShowText = document.querySelector("button");
+      function showTextInput() {
+        alert("bạn đã nhập nội dung: \n " + inputText.value);
+        inputText.value = "";
+      }
+      btnShowText.addEventListener("click", () => {
+        showTextInput();
+      });
+    </script>
+  </body>
+</html>
